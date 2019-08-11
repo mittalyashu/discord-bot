@@ -5,5 +5,10 @@
     {
       "src": "index.js", "use": "@now/node"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "DISCORD_BOT_TOKEN": "@discord_bot_token"
+    }
+  }
 }
