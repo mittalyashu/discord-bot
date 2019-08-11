@@ -1,14 +1,6 @@
-const express = require("express");
-const app = express();
+const http = require('http');
 const Discord = require("discord.js");
 const client = new Discord.Client();
-
-app.get("/", (req, res, next) => {
-  let message = "DND!!! Working at Thermal Discord Server.";
-  console.log(message);
-  res.send(message);
-});
-
 
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -31,7 +23,7 @@ client.on("message", message => {
   // Valid command
   let isBot = message.author.bot;
   if (!isBot && message.content.charAt(0) === "!") {
-    
+
     // Custom referral url for analytics
     let referralUrl = "?utm_source=discord&utm_medium=thermalbot"
 
@@ -49,8 +41,12 @@ client.on("message", message => {
   }
 });
 
-client.login(process.env.DISCORD_BOT_TOKEN);
+client.login(process.env.discord_bot_token);
 
-app.listen(8000, () => {
-  console.log(process.env.PORT)
-})
+const server = http.createServer((req, res) => {
+  let message = "DND!!! Working at Thermal Discord Server.";
+  console.log(message);
+  res.send(message);
+});
+
+server.listen(3000);
