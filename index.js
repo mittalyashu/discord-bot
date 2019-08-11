@@ -9,6 +9,7 @@ app.get("/", (req, res, next) => {
   res.send(message);
 });
 
+
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
